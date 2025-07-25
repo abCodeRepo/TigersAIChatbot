@@ -1,0 +1,392 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f3f3f3;
+}
+
+/* Start of navbar styling */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 1rem;
+  z-index: 1000;
+}
+
+/* navbar brand */
+.navbar .brand a {
+  font-size: 1.5rem;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* navbar links */
+.navbar .nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar .nav-item .nav-link {
+  color: black;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.navbar .logout-button {
+  background-color: #1d4db3;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.navbar .logout-button:hover {
+  background-color: #102b64;
+}
+
+
+/* sidebar toggle button */
+.sidebar-toggler {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* sidebar */
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: -250px; /* hidden by default */
+  height: 100%;
+  width: 250px;
+  background-color: white;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: left 0.3s ease;
+  z-index: 999;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 1rem;
+}
+
+.sidebar ul li a {
+  color: black;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.sidebar ul li a:hover {
+  text-decoration: underline;
+}
+
+/* sidebar when activated */
+.sidebar.active {
+  left: 0;
+}
+
+/* End of navbar styling */
+
+/* login page */
+#section {
+    height: 100vh;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#login-section {
+  height: 100vh;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#login-form-container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 500px;
+  min-height: 500px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  padding: 20px; 
+}
+
+#login-form-container h1, h2 {
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#username, #password {
+  width: calc(100% - 20px); 
+  max-width: 720px; 
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px; 
+}
+
+#username:focus, #password:focus {
+  outline: none;
+  border: 2px solid #1d4db3;
+  box-shadow: 0 0 5px #1d4db3;
+}
+
+#login-button {
+  width: 100%; 
+  max-width: 720px; 
+  background-color: #1d4db3; 
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#login-button:hover {
+  background-color: #102b64; 
+}
+
+/* end login page styling */
+
+/* chat page */
+.container-margin {
+  margin-top: 100px;
+}
+#chat-container {
+  flex: 2;
+  width: 800px;
+  background-color: white;
+  background-image: url('/assets/img/tiger2.svg');
+  background-size: 100% 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  min-height: 500px;
+  max-height: 500px;
+  overflow-y: hidden;
+}
+
+#chat-box {
+    
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 100px;
+}
+
+#messages {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-message, .bot-response {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+}
+
+.user-message {
+    background-color: #e1f5fe;
+    align-self: flex-end;
+}
+
+.bot-response {
+    background-color: #f1f1f1;
+    align-self: flex-start;
+}
+
+.bot-processing-animation {
+    display: inline-block;
+}
+
+.bot-processing-animation span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+    background-color: #888;
+    border-radius: 50%;
+    animation: processing 1s infinite alternate;
+}
+
+@keyframes processing {
+    0%{opacity:0}50%{opacity:1}100%{opacity:0}
+}
+
+.bot-processing-animation span:nth-child(2) {
+    animation-delay: 0.33s;
+}
+
+.bot-processing-animation span:nth-child(3) {
+    animation-delay: 0.66s;
+}
+
+
+.no-conversations {
+  text-align: right;
+  padding: 10px 15px;
+  color: #555;
+  font-size: 0.95em;
+}
+
+
+#user-input-container {
+    /*position: fixed;
+    bottom: 0;
+    width: 705px;*/
+    width: 100%;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 998;
+    display: flex;
+}
+
+#user-message {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#user-message:focus {
+    outline: none;
+    border: 2px solid #1d4db3;
+    box-shadow: 0 0 5px #1d4db3;
+}
+#send-button {
+    padding: 8px 12px;
+    background-color: #1d4db3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+#send-button:hover {
+    background-color: #102b64;
+}
+
+
+
+/* layout for chat and calendar */
+#chat-calendar-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+}
+
+
+
+/* calendar container styling */
+#calendar-container {
+  flex: 1;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  max-height: 500px;
+}
+
+#calendar-container h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #1d4db3;
+}
+
+#calendar {
+  flex: 1;
+}
+
+#user-filter-container {
+  align-items: center;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* highlighting calender on click event style */
+.fc-event.highlighted-date {
+  background-color: #1d4db3; 
+  border: none;
+}
+
+.fc .fc-button-primary {
+  background-color: #1d4db3;
+}
+
+.fc .fc-button-primary:hover {
+  background-color: #102b64;
+}
+
+/* highlighting calender on click event style */
+
+#back-to-live-chat {
+  background-color: #1d4db3;
+  position: fixed;
+
+}
+
+#back-to-live-chat:hover {
+  background-color: #102b64;
+}
+
+/* end chat page */
+
+/*subnet page */
+.btn.active {
+  background-color: #0d6efd;
+  color: white;
+}
+.ip-form-container {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+#ipv6-address {
+  min-width: 300px;
+}
+
+/*end subnet page*/
